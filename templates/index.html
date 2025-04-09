@@ -1,0 +1,77 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Search Interface</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+        background-color: #f2f2f2;
+      }
+      .chat-container {
+        max-width: 800px;
+        margin: auto;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+      }
+      .chat-message {
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+      }
+      .you {
+        background-color: #e6f7ff;
+        border-left: 4px solid #91d5ff;
+      }
+      .bot {
+        background-color: #fff1f0;
+        border-left: 4px solid #ffa39e;
+      }
+      .input-group {
+        display: flex;
+        margin-top: 20px;
+      }
+      .input-group input {
+        flex: 1;
+        padding: 10px;
+        font-size: 16px;
+      }
+      .input-group button {
+        padding: 10px 20px;
+        font-size: 16px;
+      }
+    </style>
+</head>
+<body>
+  <div class="chat-container">
+    <h1>Chat Search</h1>
+    
+    <!-- Chat messages output -->
+    <div id="chat-output">
+      {% if query %}
+      <div class="chat-message you">
+        <strong>You:</strong>
+        <p>{{ query }}</p>
+      </div>
+      {% endif %}
+      {% if result %}
+      <div class="chat-message bot">
+        <strong>Bot:</strong>
+        <p>{{ result }}</p>
+      </div>
+      {% endif %}
+    </div>
+    
+    <!-- Chat prompt form -->
+    <form method="POST" action="{{ url_for('index') }}">
+      <div class="input-group">
+        <input type="text" name="query" placeholder="Enter your query here (e.g. 'Distilling the Knowledge in a Neural Network')..." required>
+        <button type="submit">Send</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
