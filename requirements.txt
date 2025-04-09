@@ -1,0 +1,6 @@
+langchain-ollama
+tavily-python
+typing-extensions
+langchain-core
+langgraph
+Flask
